@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #19191a;
+  --color-secondary: #f2f2f0;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-extended: 'Space Grotesk', 'Aktiv Grotesk Extended', 'Syne', sans-serif;
+}
+
+/* Lenis handles smooth inertia scrolling; CSS scroll-behavior: smooth must be avoided */
+html {
+  /* scroll-behavior: smooth removed to prevent fighting with Lenis */
+}
+
+body {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================================
+   SCALVINI MARMI REVERSE-ENGINEERED 165HZ FLUID SCROLL OPTIMIZATIONS
+========================================================================= */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* =========================================================================
+   SCALVINI MARMI TYPOGRAPHY SPLIT-LINE MECHANICAL SHUTTER REVEAL (.o-text-reveal)
+========================================================================= */
+.o-text-reveal {
+  --speed: 1.35s;
+}
+
+.o-text-reveal__wrapper {
+  display: block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.o-text-reveal__item {
+  display: block;
+  transform: translateY(118%);
+  transition: transform var(--speed) cubic-bezier(0.165, 0.84, 0.44, 1) calc(var(--line-index, 0) * 0.11s);
+  will-change: transform;
+}
+
+.is-inview .o-text-reveal__item,
+.is-inview.o-text-reveal__item {
+  transform: translateY(0%);
+}
+
+/* =========================================================================
+   SCALVINI MARMI STAGGERED EDITORIAL & UI REVEAL (.o-reveal, .o-reveal-childs)
+========================================================================= */
+.o-reveal,
+.o-reveal-childs > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: transform 1.1s cubic-bezier(0.165, 0.84, 0.44, 1) calc(var(--stagger, 0) * 0.08s),
+              opacity 1.1s cubic-bezier(0.165, 0.84, 0.44, 1) calc(var(--stagger, 0) * 0.08s);
+  will-change: opacity, transform;
+}
+
+.is-inview .o-reveal,
+.is-inview.o-reveal,
+.is-inview .o-reveal-childs > *,
+.is-inview.o-reveal-childs > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.o-reveal--delay-1 { --stagger: 1; }
+.o-reveal--delay-2 { --stagger: 2; }
+.o-reveal--delay-3 { --stagger: 3; }
+.o-reveal--delay-4 { --stagger: 4; }
+.o-reveal--delay-5 { --stagger: 5; }
+
+/* =========================================================================
+   SCALVINI MARMI ARCHITECTURAL PHOTO REVEAL (Curtain wipe + Image zoom-out)
+========================================================================= */
+.o-figure {
+  position: relative;
+  overflow: hidden;
+}
+
+.o-figure__wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: #1e1e1f;
+}
+
+/* Dark architectural curtain wipe unrolling from top to bottom */
+.o-figure::before {
+  position: absolute;
+  inset: -1px;
+  z-index: 2;
+  background-color: #141415;
+  content: "";
+  transform-origin: 50% 0%;
+  transform: scaleY(1);
+  transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) calc(var(--stagger, 0) * 0.12s);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.is-inview .o-figure::before,
+.is-inview.o-figure::before {
+  transform: scaleY(0);
+}
+
+/* Photo inside wrapper zooms out smoothly into place */
+.o-figure__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  transform: scale(1.18);
+  transition: transform 1.6s cubic-bezier(0.165, 0.84, 0.44, 1) calc(var(--stagger, 0) * 0.12s);
+  will-change: transform;
+}
+
+.is-inview .o-figure__image,
+.is-inview.o-figure__image {
+  transform: scale(1.0);
+}
+
+/* Custom Torch Cursor when hovering over the 3D stone */
+body.torch-active,
+body.torch-active * {
+  cursor: none !important;
+}
+
+.logo-intro-path {
+  will-change: transform;
+  transform-box: fill-box;
+}
+
+/* Architectural custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #19191a;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(242, 242, 240, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(242, 242, 240, 0.4);
+}
+
+/* Accessibility & Performance: Respect user prefers-reduced-motion setting */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
