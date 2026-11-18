@@ -89,7 +89,7 @@ export default function HpAboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className={`c-hp-about relative w-full overflow-hidden py-24 sm:py-32 lg:py-44 z-20 lg:z-10 ${
+      className={`c-hp-about relative w-full overflow-hidden py-24 sm:py-32 lg:py-44 ${
         isInView ? 'is-inview' : ''
       }`}
       data-component="hp-about"
@@ -101,13 +101,14 @@ export default function HpAboutSection() {
         padding: '8vw 0 10vw 0',
       }}
     >
-      {/* Background layer: Solid on mobile (z-25) to avoid stone clipping images, transparently layered on desktop (z-10) */}
+      {/* Background layer: Solid #212121 placed at z-10 so the 3D stone (StoneCanvas at z-20) floats smoothly in front without any clipping boundary */}
       <div
-        className="c-hp-about__bg absolute inset-0 pointer-events-none z-25 lg:z-10"
+        className="c-hp-about__bg absolute inset-0 pointer-events-none z-10"
         style={{
           position: 'absolute',
           inset: 0,
           backgroundColor: '#212121',
+          zIndex: 10,
         }}
         aria-hidden="true"
       />
@@ -277,21 +278,14 @@ export default function HpAboutSection() {
         </h2>
 
         {/* =========================================================================
-            12-COLUMN ARCHITECTURAL GRID (c-hp-about__grid-top)
+            ARCHITECTURAL GRID: Clean Mobile Editorial Stack -> Scalvini 12-Col Desktop
         ========================================================================= */}
         <div
-          className="o-grid c-hp-about__grid-top relative grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-0 md:gap-x-[6.25vw] items-start"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
-            rowGap: '2rem',
-            columnGap: '6.25vw',
-            position: 'relative',
-          }}
+          className="o-grid c-hp-about__grid-top relative grid grid-cols-1 md:grid-cols-12 gap-y-8 md:gap-y-0 md:gap-x-[6.25vw] items-start w-full"
         >
           {/* Child 1: Natural Stone & Architectural Philosophy */}
           <h3
-            className="c-hp-about__text o-reveal col-span-12 md:col-start-7 md:col-span-6 lg:col-start-8 lg:col-span-5 xl:col-span-4"
+            className="c-hp-about__text o-reveal col-span-1 md:col-start-7 md:col-span-6 lg:col-start-8 lg:col-span-5 xl:col-span-4 md:[grid-row:1]"
             data-scroll-reveal
             style={{
               fontFamily: 'var(--font-sans), "Neue Montreal", sans-serif',
@@ -300,7 +294,6 @@ export default function HpAboutSection() {
               lineHeight: 1.36,
               color: '#e8e6e2',
               letterSpacing: '-0.01em',
-              gridRow: 1,
             }}
           >
             Dedicated to the mastery of natural stone, transforming earth’s rarest marble strata into timeless architectural monoliths through ancestral masonry and five-axis precision.
@@ -308,11 +301,8 @@ export default function HpAboutSection() {
 
           {/* Child 2: Discover Our Atelier CTA Button */}
           <div
-            className="c-hp-about__cta o-reveal o-reveal--delay-1 col-span-12 md:col-start-7 md:col-span-5 lg:col-start-8 lg:col-span-5 pt-4 md:pt-10 lg:pt-14"
+            className="c-hp-about__cta o-reveal o-reveal--delay-1 col-span-1 md:col-start-7 md:col-span-5 lg:col-start-8 lg:col-span-5 pt-2 md:pt-10 lg:pt-14 md:[grid-row:2]"
             data-scroll-reveal
-            style={{
-              gridRow: 2,
-            }}
           >
             <Link href="/brands" className="o-button-arrow group" aria-label="Discover our atelier">
               <span>Discover Our Atelier</span>
@@ -332,15 +322,13 @@ export default function HpAboutSection() {
             </Link>
           </div>
 
-          {/* Child 3: Workshop Stacked Slabs Photo (Original Flush Left Edge with -ml-[6.25vw] and Parallax 1) */}
+          {/* Child 3: Workshop Stacked Slabs Photo (Original Flush Left Edge with -ml-[6.25vw] and Parallax 1 on Desktop) */}
           <div
             ref={media1Ref}
-            className="c-hp-about__media o-reveal o-reveal--delay-1 col-span-10 md:col-start-1 md:col-span-5 lg:col-span-5 md:row-start-2 md:row-span-2 -ml-[6.25vw] will-change-transform"
+            className="c-hp-about__media o-reveal o-reveal--delay-1 w-full md:w-auto col-span-1 md:col-start-1 md:col-span-5 lg:col-span-5 md:row-start-2 md:row-span-2 md:-ml-[6.25vw] will-change-transform"
             data-scroll-reveal
             data-scroll-parallax="1"
             style={{
-              marginLeft: '-6.25vw',
-              gridRow: '2 / span 2',
               willChange: 'transform',
             }}
           >
@@ -376,15 +364,13 @@ export default function HpAboutSection() {
             </div>
           </div>
 
-          {/* Child 4: Touching Veined Marble Video (Bottom-Right Media with Parallax 2) */}
+          {/* Child 4: Touching Veined Marble Video (Bottom-Right Media with Parallax 2 on Desktop) */}
           <div
             ref={media2Ref}
-            className="c-hp-about__image o-reveal o-reveal--delay-2 col-start-5 col-span-8 md:col-start-10 md:col-span-3 self-end will-change-transform pt-12 md:pt-0"
+            className="c-hp-about__image o-reveal o-reveal--delay-2 w-[85%] sm:w-[80%] md:w-auto ml-auto md:ml-0 mt-8 md:mt-0 col-span-1 md:col-start-10 md:col-span-3 md:row-start-3 md:row-span-1 self-end will-change-transform pt-0 md:pt-0"
             data-scroll-reveal
             data-scroll-parallax="2"
             style={{
-              gridRow: '3 / span 1',
-              alignSelf: 'flex-end',
               willChange: 'transform',
             }}
           >

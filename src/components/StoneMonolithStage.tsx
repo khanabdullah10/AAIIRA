@@ -101,6 +101,9 @@ export default function StoneMonolithStage() {
           </div>
 
           {/* ================= CENTER COLUMN: RESERVED FOR 3D STONE MONOLITH ================= */}
+          {/* On mobile: Generates clean vertical clearance for the floating 3D stone monolith so it never collides with text */}
+          <div className="lg:hidden h-[28vh] sm:h-[34vh] w-full pointer-events-none" aria-hidden="true" />
+          {/* On desktop: Reserves center 4 columns flanking the 3D stone monolith */}
           <div className="hidden lg:block lg:col-span-4 h-full pointer-events-none" aria-hidden="true" />
 
           {/* ================= RIGHT CONTENT: BESPOKE ENGINEERING & FABRICATION ================= */}
