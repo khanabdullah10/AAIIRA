@@ -89,7 +89,7 @@ export default function HpAboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className={`c-hp-about relative w-full overflow-hidden py-24 sm:py-32 lg:py-44 ${
+      className={`c-hp-about relative w-full overflow-hidden py-24 sm:py-32 lg:py-44 z-20 lg:z-10 ${
         isInView ? 'is-inview' : ''
       }`}
       data-component="hp-about"
@@ -101,14 +101,13 @@ export default function HpAboutSection() {
         padding: '8vw 0 10vw 0',
       }}
     >
-      {/* Background layer: Placed at zIndex: 10 so the 3D stone (StoneCanvas at zIndex: 20) is visible in front of it */}
+      {/* Background layer: Solid on mobile (z-25) to avoid stone clipping images, transparently layered on desktop (z-10) */}
       <div
-        className="c-hp-about__bg absolute inset-0 pointer-events-none"
+        className="c-hp-about__bg absolute inset-0 pointer-events-none z-25 lg:z-10"
         style={{
           position: 'absolute',
           inset: 0,
           backgroundColor: '#212121',
-          zIndex: 10,
         }}
         aria-hidden="true"
       />

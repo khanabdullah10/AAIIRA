@@ -24,11 +24,8 @@ export default function HamburgerButton({
       onMouseLeave={() => setIsHovered(false)}
       aria-label="Open Navigation Drawer"
       aria-expanded={false}
-      className="fixed right-6 sm:right-10 md:right-14 lg:right-16 top-1/2 -translate-y-1/2 z-50 p-3 text-secondary focus:outline-none transition-transform duration-300 hover:scale-110 cursor-pointer"
+      className="fixed right-4 top-4 sm:right-6 sm:top-6 md:right-10 lg:right-14 md:top-1/2 md:-translate-y-1/2 z-50 p-3 text-secondary focus:outline-none transition-transform duration-300 hover:scale-110 cursor-pointer"
       style={{
-        position: 'fixed',
-        top: '50%',
-        transform: 'translateY(-50%)',
         zIndex: 50,
       }}
     >

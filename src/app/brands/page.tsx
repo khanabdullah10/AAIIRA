@@ -357,6 +357,7 @@ export default function BrandsPage() {
                                 src={swatch.thumb}
                                 alt={swatch.name}
                                 fill
+                                unoptimized
                                 className="object-cover"
                                 sizes="44px"
                               />
@@ -375,6 +376,7 @@ export default function BrandsPage() {
                         src={activeSwatch.slab}
                         alt={`${series.title} - ${activeSwatch.name}`}
                         fill
+                        unoptimized
                         className="object-cover transition-all duration-700 ease-out"
                         sizes="(max-width: 1024px) 100vw, 58vw"
                         priority={index === 0}

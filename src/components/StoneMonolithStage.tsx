@@ -7,12 +7,7 @@ export default function StoneMonolithStage() {
   return (
     <section
       id="monolith-stage"
-      className="relative min-h-screen w-full bg-[#0f0f10] overflow-hidden border-t border-white/5 z-10 flex flex-col justify-between"
-      style={{
-        transform: 'translateZ(0)',
-        willChange: 'transform',
-        backfaceVisibility: 'hidden',
-      }}
+      className="relative min-h-screen w-full bg-[#0f0f10] overflow-hidden border-t border-white/5 flex flex-col justify-between"
     >
       {/* Decorative hairline architectural vertical grid guides */}
       <div className="absolute left-10 sm:left-16 md:left-24 lg:left-32 top-0 bottom-0 w-[1px] bg-white/[0.04] pointer-events-none z-10" />
@@ -38,10 +33,10 @@ export default function StoneMonolithStage() {
 
       {/* =========================================================================
           SEO ARCHITECTURAL EDITORIAL CONTENT (Scalvini Marmi Rolling Text Reveal)
-          Positioned with an intentional architectural gap from the top watermark.
-          Sits along a clean horizon line at ~48vh, flanking the 3D stone monolith.
+          Responsive flow: Relative on mobile to prevent content collision,
+          flanking horizon line on desktop at ~48vh flanking the 3D stone monolith.
       ========================================================================= */}
-      <div className="absolute inset-x-0 top-[46vh] sm:top-[47vh] md:top-[48vh] w-full max-w-[1920px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 z-30 pointer-events-none">
+      <div className="relative lg:absolute inset-x-0 pt-20 pb-16 sm:pt-28 sm:pb-20 lg:pt-0 lg:pb-0 lg:top-[48vh] w-full max-w-[1920px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 z-30 pointer-events-none">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-8 items-start w-full">
           {/* ================= LEFT CONTENT: QUARRY EXTRACTION & STRATA ================= */}
           <div className="lg:col-span-4 pointer-events-auto flex flex-col justify-start text-left pl-2 sm:pl-4 lg:pl-8">

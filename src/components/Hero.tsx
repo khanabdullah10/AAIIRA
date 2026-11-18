@@ -195,7 +195,7 @@ export default function Hero() {
 
       {/* ================= ARCHITECTURAL VERTICAL FRAMING LINES (Hero section only) ================= */}
       <div
-        className="navbar-line-left absolute top-0 bottom-0 left-12 sm:left-20 md:left-28 lg:left-36 w-[1px] bg-secondary/25 z-20 origin-bottom scale-y-0 pointer-events-none"
+        className="navbar-line-left hidden md:block absolute top-0 bottom-0 md:left-28 lg:left-36 w-[1px] bg-secondary/25 z-20 origin-bottom scale-y-0 pointer-events-none"
         aria-hidden="true"
         style={{
           position: 'absolute',
@@ -208,7 +208,7 @@ export default function Hero() {
         }}
       />
       <div
-        className="navbar-line-right absolute top-0 bottom-0 right-12 sm:right-20 md:right-28 lg:right-36 w-[1px] bg-secondary/25 z-20 origin-top scale-y-0 pointer-events-none"
+        className="navbar-line-right hidden md:block absolute top-0 bottom-0 md:right-28 lg:right-36 w-[1px] bg-secondary/25 z-20 origin-top scale-y-0 pointer-events-none"
         aria-hidden="true"
         style={{
           position: 'absolute',

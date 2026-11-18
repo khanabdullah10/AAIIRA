@@ -22,11 +22,8 @@ export default function MonogramLogo() {
         }
       }}
       aria-label="AAIIRA MARBLES - Since 2008 - Return to top"
-      className="fixed left-4 sm:left-6 md:left-8 lg:left-10 xl:left-12 top-1/2 -translate-y-1/2 z-50 flex items-center gap-2.5 sm:gap-3 md:gap-3.5 cursor-pointer group select-none outline-none"
+      className="fixed left-4 top-4 sm:left-6 sm:top-6 md:left-8 lg:left-10 xl:left-12 md:top-1/2 md:-translate-y-1/2 z-50 flex items-center gap-2.5 sm:gap-3 md:gap-3.5 cursor-pointer group select-none outline-none"
       style={{
-        position: 'fixed',
-        top: '50%',
-        transform: 'translateY(-50%)',
         zIndex: 50,
       }}
     >
@@ -36,7 +33,7 @@ export default function MonogramLogo() {
           Exact geometric vector code in pure white (#ffffff)
       ========================================================================= */}
       <div
-        className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-[66px] lg:h-[66px] text-white transition-all duration-300 ease-out flex items-center justify-center shrink-0"
+        className="relative w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 lg:w-[66px] lg:h-[66px] text-white transition-all duration-300 ease-out flex items-center justify-center shrink-0"
         style={{
           transform: isHovered ? 'scale(1.06)' : 'scale(1.0)',
           filter: isHovered
@@ -95,7 +92,7 @@ export default function MonogramLogo() {
           Correctly oriented reading top-to-bottom naturally along the vertical line
       ========================================================================= */}
       <div
-        className="flex items-center justify-center text-white/80 group-hover:text-white transition-colors duration-300 select-none"
+        className="hidden md:flex items-center justify-center text-white/80 group-hover:text-white transition-colors duration-300 select-none"
         style={{
           fontFamily: 'var(--font-extended), "Neue Montreal", sans-serif',
         }}

@@ -254,8 +254,12 @@ export default function StoneCanvas() {
     }, 180);
 
     // --- RESPONSIVE SETTINGS ---
-    const isMobile = window.innerWidth < 1024;
-    const baseScale = isMobile ? 0.78 : 0.98;
+    const getResponsiveScale = (w: number) => {
+      if (w < 640) return 0.58;
+      if (w < 1024) return 0.74;
+      return 0.98;
+    };
+    const baseScale = getResponsiveScale(window.innerWidth);
     stoneMasterGroup.scale.set(baseScale, baseScale, baseScale);
 
     // --- ZERO-REFLOW DOM OFFSET CACHING ---
@@ -583,8 +587,7 @@ export default function StoneCanvas() {
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
 
-      const mobileNow = window.innerWidth < 1024;
-      const newScale = mobileNow ? 0.78 : 0.98;
+      const newScale = getResponsiveScale(window.innerWidth);
       stoneMasterGroup.scale.set(newScale, newScale, newScale);
     };
     window.addEventListener('resize', handleResize);
